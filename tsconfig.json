@@ -10,7 +10,14 @@
     "noEmit": true,
     "strict": true,
     "target": "esnext",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "utils/*": ["./src/utils/*"],
+      "screen/*": ["./src/screen/*"],
+      "service/*": ["./src/service/*"],
+      "components/*": ["./src/components/*"]
+    }
   },
   "exclude": [
     "node_modules",
