@@ -6,22 +6,30 @@ import {
   StyleSheet,
 } from "react-native";
 
+import { useAppSelector } from "service/hooks";
 import { AnswerButtonProps } from "utils/types";
 
 const AnswerButtons: FC<AnswerButtonProps> = (props) => {
   const { answer = "", onPress, disabled, correct } = props;
+
+  const { value } = useAppSelector((state) => state.theme);
+  const { backgroundColor, primaryColor, secondaryColor } = value;
+
   return (
     <Pressable
       onPress={onPress}
       style={[
         styles.buttonStyle,
-        { backgroundColor: disabled ? "#F5F5DC" : "#F5DEB3" },
+        {
+          backgroundColor: disabled ?  `${secondaryColor}50` : secondaryColor,
+          shadowColor: primaryColor,
+        },
       ]}
     >
       <Text
         style={[
           styles.buttonTextStyle,
-          { color: correct ? "brown" : "black" },
+          { color: correct ? secondaryColor : backgroundColor },
         ]}
       >{answer}</Text>
     </Pressable>
@@ -30,13 +38,13 @@ const AnswerButtons: FC<AnswerButtonProps> = (props) => {
 
 const styles = StyleSheet.create({
   buttonStyle: {
-    width: '80%',
-    justifyContent: 'center',
-    alignContent: 'center',
-    marginLeft: 27,
     height: 38,
+    width: '80%',
     marginTop: 10,
-    shadowColor: '#171717',
+    marginLeft: 27,
+    borderRadius: 5,
+    alignContent: 'center',
+    justifyContent: 'center',
     ...Platform.select({
       ios: {
         shadowOffset: { width: -2, height: 4 },
@@ -49,9 +57,9 @@ const styles = StyleSheet.create({
     }),
   },
   buttonTextStyle: {
-    textAlign: 'left',
     fontSize: 17,
     marginLeft: 8,
+    fontWeight: "bold"
   },
 });
 

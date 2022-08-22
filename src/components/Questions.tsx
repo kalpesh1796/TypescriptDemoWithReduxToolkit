@@ -3,16 +3,29 @@ import {
   Text,
   View,
   StyleSheet,
+  useWindowDimensions,
 } from "react-native";
+import RenderHTML from "react-native-render-html";
 
 import { QuestionProps } from "utils/types";
+import { useAppSelector } from "service/hooks";
 
 const Question: FC<QuestionProps> = (props) => {
   const { question, questionNo } = props;
+  const { width } = useWindowDimensions();
+
+  const { value } = useAppSelector((state) => state.theme);
+  const { primaryColor, secondaryColor } = value;
   return (
     <View style={styles.questioncontainer}>
-      <Text style={styles.textstyle}>{questionNo}</Text>
-      <Text style={styles.questionStyle}>{question}</Text>
+      <Text style={[styles.textstyle, { color: secondaryColor }]}>{questionNo}</Text>
+      <View style={{ flex: 1 }}>
+        <RenderHTML
+          contentWidth={width}
+          source={{ html: question }}
+          baseStyle={{...styles.questionStyle, color: primaryColor}}
+        />
+      </View>
     </View>
   );
 };
@@ -20,20 +33,18 @@ const Question: FC<QuestionProps> = (props) => {
 const styles = StyleSheet.create({
   questioncontainer: {
     marginTop: 10,
-    paddingRight: 16,
+    paddingHorizontal: 16,
     flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: 'white',
+    alignItems: "flex-start",
   },
   textstyle: {
-    padding: 15,
     fontSize: 15,
-    color: 'blue',
+    marginRight: 15,
+    fontWeight: "bold",
   },
   questionStyle: {
     fontSize: 15,
-    color: 'black',
-    marginRight: 7,
+    fontWeight: "bold",
   }
 });
 
