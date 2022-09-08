@@ -22,7 +22,7 @@ const App = () => {
   return (
     <NavigationContainer theme={themeType === "dark" ? DarkTheme : DefaultTheme}>
       <Stack.Navigator>
-        {/* <Stack.Screen name="Quiz" component={Quiz} /> */}
+        <Stack.Screen name="Quiz" component={Quiz} />
         <Stack.Screen name="Settings" component={Settings} />
       </Stack.Navigator>
     </NavigationContainer>
