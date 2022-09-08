@@ -13,7 +13,7 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/
 import Quiz from 'screen/Quiz';
 import Settings from 'screen/Settings';
 
-import { useAppSelector } from "src/redux/hooks";
+import { useAppSelector } from "./src/redux/hooks";
 
 const Stack = createNativeStackNavigator();
 

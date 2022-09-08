@@ -8,7 +8,7 @@ import {
 import RenderHTML from "react-native-render-html";
 
 import { QuestionProps } from "utils/types";
-import { useAppSelector } from "src/redux/hooks";
+import { useAppSelector } from "../redux/hooks";
 
 const Question: FC<QuestionProps> = (props) => {
   const { question, questionNo } = props;
