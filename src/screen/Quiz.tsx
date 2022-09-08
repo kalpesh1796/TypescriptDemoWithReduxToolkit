@@ -13,8 +13,8 @@ import Questions from "components/Questions";
 import Answers from "components/Answers";
 
 import { Answer, Question, QuizScreenProps } from "utils/types";
+import { useAppSelector } from "../redux/hooks";
 import { getQuestioJNS } from "service/api";
-import { useAppSelector } from "src/redux/hooks";
 
 const Quiz: FC<QuizScreenProps> = (props) => {
   const { navigation } = props;
