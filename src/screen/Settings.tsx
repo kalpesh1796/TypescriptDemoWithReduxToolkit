@@ -10,7 +10,7 @@ import {
 
 import { LightTheme, DarkTheme } from "utils/data";
 import { changeTheme } from "../redux/theme/themeSlice";
-import { useAppSelector, useAppDispatch } from "service/hooks";
+import { useAppSelector, useAppDispatch } from "src/redux/hooks";
 
 const Settings: FC = () => {
   const dispatch = useAppDispatch();

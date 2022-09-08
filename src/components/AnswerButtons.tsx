@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from "react-native";
 
-import { useAppSelector } from "service/hooks";
+import { useAppSelector } from "src/redux/hooks";
 import { AnswerButtonProps } from "utils/types";
 
 const AnswerButtons: FC<AnswerButtonProps> = (props) => {
